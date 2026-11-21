@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Animesh Parajuli | UI/UX &amp; Graphic Designer</title>
+<meta name="description" content="Portfolio of Animesh Parajuli, a UI/UX designer, graphic designer and React Native developer based in Pokhara, Nepal.">
+<meta property="og:title" content="Animesh Parajuli | UI/UX &amp; Graphic Designer">
+<meta property="og:description" content="UI/UX, graphic design and mobile app development from Pokhara, Nepal.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Syne:wght@400..800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+<style>
+/* ===== VARIABLES: change --hue to recolor the whole site (110 green, 220 blue, 300 pink) ===== */
+:root{
+  --header-height:3.5rem;
+  --hue:220;
+  --first-color:hsl(var(--hue),80%,62%);
+  --gradient-color:linear-gradient(90deg,hsl(var(--hue),80%,62%) 0%,hsl(var(--hue),100%,88%) 40%,hsl(var(--hue),100%,88%) 60%,hsl(var(--hue),80%,62%) 100%);
+  --white-color:hsl(var(--hue),24%,98%);
+  --black-color:hsl(var(--hue),12%,8%);
+  --text-color:hsl(var(--hue),8%,72%);
+  --body-color:hsl(var(--hue),45%,6%);
+  --container-color:hsl(var(--hue),32%,11%);
+  --border-color:hsl(var(--hue),28%,25%);
+  --body-font:"Poppins",sans-serif;
+  --second-font:"Syne",sans-serif;
+  --biggest-font-size:2.4rem;--bigger-font-size:1.75rem;--h2-font-size:1.25rem;--h3-font-size:1rem;
+  --normal-font-size:.938rem;--small-font-size:.813rem;
+  color-scheme:dark;
+}
+@media (width>=1150px){:root{--biggest-font-size:5rem;--bigger-font-size:3rem;--h2-font-size:1.5rem;--h3-font-size:1.25rem;--normal-font-size:1rem;--small-font-size:.875rem}}
+*{box-sizing:border-box;padding:0;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:4rem}
+body{font-family:var(--body-font);font-size:var(--normal-font-size);background:radial-gradient(ellipse 70% 50% at 15% 0%,hsla(var(--hue),85%,50%,.30),transparent 70%),radial-gradient(ellipse 60% 45% at 95% 35%,hsla(var(--hue),90%,55%,.18),transparent 70%),radial-gradient(ellipse 70% 50% at 5% 90%,hsla(var(--hue),80%,45%,.22),transparent 70%),var(--body-color);background-attachment:fixed;color:var(--text-color);line-height:1.6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3,h4{font-family:var(--second-font);color:var(--white-color);font-weight:600;line-height:1.15}
+ul{list-style:none}a{text-decoration:none;color:inherit}
+input,textarea,button{font:inherit;border:0;outline:0;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--first-color);outline-offset:3px}
+.container{max-width:1120px;margin-inline:1rem}
+.section{padding-block:5rem 1rem;position:relative}
+.section__title{text-align:center;font-size:var(--bigger-font-size);margin-bottom:2rem}
+.section__title span,.accent{color:var(--first-color)}
+.main{overflow:hidden}
+.grid{display:grid;gap:1.5rem}
+.card{background:linear-gradient(160deg,hsla(var(--hue),80%,62%,.14),var(--container-color) 55%);border:1px solid var(--border-color);border-radius:1.5rem;padding:1.5rem}
+.blob{position:absolute;z-index:-1;border-radius:50%;background:var(--first-color);width:150px;height:150px;filter:blur(100px)}
+.button{display:inline-flex;align-items:center;gap:.5rem;background:var(--first-color);color:var(--black-color);padding:1rem 2rem;border-radius:4rem;font-weight:600;transition:box-shadow .4s}
+.button:hover{box-shadow:0 8px 24px hsla(var(--hue),80%,62%,.4)}
+.chip{display:inline-block;font-size:var(--small-font-size);padding:.3rem .8rem;border:1px solid var(--border-color);border-radius:2rem;background:hsla(var(--hue),20%,50%,.08);color:var(--white-color)}
+
+/* ===== HEADER ===== */
+.header{position:fixed;inset:0 0 auto 0;z-index:100;padding-top:env(safe-area-inset-top,0px);transition:background .4s,backdrop-filter .4s}
+.header.scrolled{background:hsla(var(--hue),45%,7%,.7);backdrop-filter:blur(16px)}
+.nav{height:var(--header-height);display:flex;justify-content:space-between;align-items:center}
+.nav__logo{font-family:var(--second-font);font-weight:600;color:var(--white-color)}
+.nav__toggle,.nav__close{font-size:1.5rem;cursor:pointer;color:var(--white-color)}
+.nav__close{position:absolute;top:1rem;right:1rem}
+.nav__list{display:flex;flex-direction:column;row-gap:2.2rem}
+.nav__link{position:relative;color:var(--white-color);font-weight:600;transition:color .4s}
+.nav__link:hover,.nav__link.active{color:var(--first-color)}
+.nav__link::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:var(--first-color);left:-1rem;top:0;bottom:0;margin-block:auto;opacity:0;box-shadow:0 0 8px var(--first-color);transition:opacity .4s}
+.nav__link.active::after{opacity:1}
+.nav__contact{display:inline-flex;background:var(--first-color);color:var(--black-color);padding:.8rem 1.8rem;border-radius:4rem;font-weight:600}
+@media (width<=1149px){
+  .nav__menu{position:fixed;top:0;right:-120%;width:80%;max-width:360px;height:100%;background:hsla(var(--hue),10%,10%,.55);backdrop-filter:blur(24px);padding:6rem 2rem 2rem 3rem;z-index:100;transition:right .4s}
+  .nav__menu.show-menu{right:0}
+}
+@media (width>=1150px){
+  .container{margin-inline:auto}.section{padding-block:7rem 2rem}
+  .nav{height:5.5rem}.nav__toggle,.nav__close{display:none}
+  .nav__list{flex-direction:row;align-items:center;column-gap:3rem}
+}
+
+/* ===== HOME ===== */
+.home{padding-top:8rem;text-align:center}
+.home__greeting{font-size:var(--small-font-size);margin-bottom:1rem;color:var(--white-color)}
+.home__title{font-size:var(--biggest-font-size);margin-bottom:1rem}
+.home__typed{min-height:1.5em;font-size:var(--h2-font-size);color:var(--first-color);font-family:var(--second-font);font-weight:600}
+.home__typed::after{content:"|";animation:blink 1s steps(1) infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+.home__desc{max-width:34rem;margin:1rem auto 2rem;font-size:var(--small-font-size)}
+.home__img{position:relative;width:220px;margin:0 auto}
+.home__card{aspect-ratio:3/4;border-radius:2rem;transform:rotate(6deg);background:linear-gradient(160deg,hsl(var(--hue),80%,62%),hsl(var(--hue),70%,28%));display:grid;place-items:center;font-family:var(--second-font);font-size:4.5rem;font-weight:700;color:var(--white-color);border:6px solid hsla(var(--hue),80%,80%,.25);box-shadow:0 20px 60px hsla(var(--hue),80%,55%,.35)}
+.home__badge{position:absolute;right:-2.5rem;bottom:-1.5rem;width:100px;height:100px;border-radius:50%;background:var(--body-color);border:1px solid var(--border-color);display:grid;place-items:center}
+.home__badge svg{position:absolute;inset:0;animation:spin 14s linear infinite}
+.home__badge text{fill:var(--white-color);font-size:11px;letter-spacing:2px;font-family:var(--second-font)}
+.home__badge a{width:40px;height:40px;border-radius:50%;background:var(--first-color);color:var(--black-color);display:grid;place-items:center;font-size:1.2rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== ABOUT ===== */
+.about__statement{font-family:var(--second-font);color:var(--white-color);font-size:var(--h2-font-size);line-height:1.5;font-weight:500}
+.about__statement span{color:var(--first-color)}
+.about__chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.about__stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.about__stats strong{display:block;font-family:var(--second-font);font-size:1.6rem;color:var(--first-color)}
+@media (width>=768px){.about__grid{grid-template-columns:1.3fr 1fr;align-items:center;gap:4rem}}
+
+/* ===== WORK ===== */
+.work__track{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1.2rem;cursor:grab;scrollbar-width:none}
+.work__track::-webkit-scrollbar{display:none}
+.work__card{flex:0 0 100%;scroll-snap-align:start;position:relative}
+.work__img{aspect-ratio:4/3;border-radius:1rem;margin-bottom:1rem;background:linear-gradient(135deg,hsl(var(--hue),60%,22%),hsl(var(--hue),80%,55%));display:grid;place-items:center;font-size:var(--small-font-size);color:var(--white-color);position:relative}
+.work__link{position:absolute;top:.8rem;right:.8rem;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--first-color);color:var(--black-color);display:grid;place-items:center;opacity:0;transition:opacity .4s}
+.work__card:hover .work__link,.work__link:focus-visible{opacity:1}
+.work__num{font-family:var(--second-font);font-size:1.5rem;color:var(--first-color);font-weight:600}
+.work__tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.dots{display:flex;justify-content:center;gap:.5rem;margin-top:.5rem}
+.dots button{width:8px;height:8px;border-radius:50%;background:var(--border-color);transition:background .4s,width .4s}
+.dots button.on{background:var(--first-color);width:22px;border-radius:8px}
+@media (width>=540px){.work__card{flex-basis:calc(50% - .6rem)}}
+@media (width>=1150px){.work__card{flex-basis:calc(33.333% - .8rem)}}
+
+/* ===== SERVICES ===== */
+.services__list{max-width:760px;margin-inline:auto;display:grid;gap:1rem}
+.services__btn{width:100%;display:flex;justify-content:space-between;align-items:center;font-family:var(--second-font);font-size:var(--h3-font-size);font-weight:600;color:var(--white-color);cursor:pointer;text-align:left}
+.services__btn i{font-style:normal;font-size:1.6rem;color:var(--first-color);transition:transform .4s}
+.services__item.open .services__btn i{transform:rotate(45deg)}
+.services__info{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s}
+.services__item.open .services__info{grid-template-rows:1fr}
+.services__info p{overflow:hidden;padding-top:0;font-size:var(--small-font-size)}
+.services__item.open .services__info p{padding-top:1rem}
+
+/* ===== SKILLS ===== */
+.skills__grid{gap:1.2rem}
+.skills__card h3{margin-bottom:1rem}
+.skills__chips{display:flex;flex-wrap:wrap;gap:.5rem}
+@media (width>=768px){.skills__grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ===== TIMELINE ===== */
+.timeline{max-width:760px;margin-inline:auto;border-left:2px solid var(--border-color);padding-left:1.5rem;display:grid;gap:1.5rem}
+.timeline__item{position:relative}
+.timeline__item::before{content:"";position:absolute;left:calc(-1.5rem - 7px);top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--first-color);box-shadow:0 0 10px var(--first-color)}
+.timeline__date{font-size:var(--small-font-size);color:var(--first-color)}
+.timeline ul{list-style:disc;padding-left:1.1rem;margin-top:.6rem;font-size:var(--small-font-size);display:grid;gap:.3rem}
+
+/* ===== TESTIMONIALS ===== */
+.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee__track{display:flex;gap:1.2rem;width:max-content;animation:scroll 40s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+.marquee .card{width:290px;font-size:var(--small-font-size)}
+.marquee .card h4{margin-top:1rem;font-size:var(--normal-font-size)}
+.marquee .card small{color:var(--first-color)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ===== CONTACT ===== */
+.contact__grid{gap:2rem}
+.contact__form{display:grid;gap:1rem}
+.contact__form input,.contact__form textarea{width:100%;padding:1rem 1.4rem;border-radius:1.5rem;background:var(--container-color);border:1px solid var(--border-color)}
+.contact__form textarea{height:9rem;resize:none}
+.contact__form button{justify-content:center;cursor:pointer}
+.contact__msg{font-size:var(--small-font-size);min-height:1.4em}
+.contact__cards{display:grid;gap:1rem;align-content:start}
+.contact__card{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.4rem;border-radius:2rem;background:var(--container-color);border:1px solid var(--border-color);transition:border-color .4s}
+.contact__card:hover{border-color:var(--first-color)}
+.contact__card small{display:block;color:var(--white-color);font-weight:600}
+@media (width>=768px){.contact__grid{grid-template-columns:1fr 1fr}}
+
+/* ===== FOOTER ===== */
+.footer{padding-block:5rem 2rem}
+.footer__grid{gap:2rem;align-items:center}
+.footer__title{font-size:var(--h2-font-size);max-width:26rem}
+.footer__links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer__copy{text-align:center;font-size:var(--small-font-size);margin-top:3rem}
+@media (width>=768px){.footer__grid{grid-template-columns:1fr auto}}
+.scrollup{position:fixed;right:1rem;bottom:-30%;z-index:90;width:2.8rem;height:2.8rem;border-radius:50%;background:var(--first-color);color:var(--black-color);display:grid;place-items:center;font-size:1.2rem;transition:bottom .4s}
+.scrollup.show{bottom:calc(1.5rem + env(safe-area-inset-bottom,0px))}
+
+/* ===== KINETIC INTRO HERO (dot > bouncy letters > name flash > PORTFOLIO > portrait > nav) ===== */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center;padding:5rem 1rem 3rem;background:radial-gradient(circle at 50% 42%,#141414 0%,#0a0a0a 52%,#050505 100%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E")}
+#stars{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.metal{font-family:"Montserrat",sans-serif;font-weight:900;letter-spacing:-.04em;line-height:.9;text-transform:uppercase;background:linear-gradient(180deg,#fff 0%,#f0f0f0 32%,#a3a3a3 68%,#6e6e6e 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 12px 24px rgba(0,0,0,.8))}
+.fx{position:absolute;top:46%;left:50%;translate:-50% -50%;pointer-events:none;z-index:3;opacity:0;white-space:nowrap}
+#dot{width:14px;height:14px;border-radius:50%;background:#fff}
+
+.bounce{display:inline-block;flex-shrink:0;opacity:0;transform-origin:center bottom}
+.bounce.on{opacity:1}
+.portrait{position:relative;z-index:0;width:min(320px,80vw);aspect-ratio:4/4.3;margin-top:-1rem;mix-blend-mode:lighten;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 56% 62% at 50% 44%,#000 50%,rgba(0,0,0,.45) 75%,transparent 98%);mask-image:radial-gradient(ellipse 56% 62% at 50% 44%,#000 50%,rgba(0,0,0,.45) 75%,transparent 98%)}
+.portrait canvas{width:100%;height:100%;display:block;filter:grayscale(1) contrast(1.15)}
+@media (width>=640px){.portrait{width:440px;margin-top:-4rem}}
+@media (width>=768px){.portrait{width:520px}}
+@media (width>=1024px){.portrait{width:580px}}
+.hero__head{position:relative;z-index:2;margin-top:-5rem;display:inline-flex;flex-direction:column;align-items:flex-start;max-width:100%}
+.hero__head h1{font-size:14.5vw;white-space:nowrap;display:flex;align-items:center;transition:font-size .6s cubic-bezier(.16,1,.3,1)}
+@media (width>=640px){.hero__head{margin-top:-7rem}.hero__head h1{font-size:12.5vw}}
+@media (width>=768px){.hero__head{margin-top:-8rem}.hero__head h1{font-size:11vw}}
+@media (width>=1024px){.hero__head h1{font-size:138px}}
+@media (width>=1280px){.hero__head h1{font-size:156px}}
+.hero__row{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:.5rem;gap:1rem}
+.hero__sub{text-align:left;font-size:.9rem;font-weight:500;letter-spacing:.02em;color:#d4d4d4}
+.hero__sub em{color:#a3a3a3;font-weight:400}
+.hero__loc{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:#737373}
+.hero__cue{position:absolute;bottom:1.2rem;left:50%;translate:-50% 0;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;display:grid;justify-items:center;gap:.4rem}
+.hero__cue::after{content:"";width:1px;height:20px;background:linear-gradient(var(--text-color),transparent)}
+.replay-bar{position:fixed;left:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:90;display:flex;gap:.5rem}
+.replay{padding:.55rem 1rem;border-radius:2rem;border:1px solid var(--border-color);background:hsla(var(--hue),40%,8%,.85);backdrop-filter:blur(8px);color:var(--white-color);font-size:.75rem;cursor:pointer}
+@keyframes dot{0%{transform:scale(0);opacity:0}35%{transform:scale(1.15);opacity:1;box-shadow:0 0 25px 6px rgba(255,255,255,.75)}75%{transform:scale(.95);opacity:1;box-shadow:0 0 35px 10px rgba(255,255,255,.5)}100%{transform:scale(2.8);opacity:0}}
+@keyframes pop{0%{opacity:0;transform:translateY(30px) scale(.3) rotate(calc(var(--r)*1.6))}45%{opacity:1;transform:translateY(-10px) scale(1.12) rotate(calc(var(--r)*-.4))}70%{opacity:1;transform:rotate(var(--r))}100%{opacity:0;transform:translateY(-20px) scale(1.35)}}
+@keyframes morph{0%{opacity:0;transform:scale(.82) perspective(600px) rotateX(25deg)}45%{opacity:1;transform:scale(1.03)}80%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.15)}}
+@keyframes settle{0%{opacity:0;transform:translateY(-45px) scale(.78)}50%{opacity:1;transform:translateY(4px) scale(1.02)}100%{opacity:1;transform:none}}
+@keyframes reveal{from{opacity:0;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0)}}
+@keyframes rise{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body.play #dot{animation:dot .42s cubic-bezier(.22,1,.36,1) both}
+body.play .bounce{animation:drop .5s cubic-bezier(.34,1.56,.64,1) calc(.14s + var(--i)*.045s) both}
+
+@keyframes drop{0%{opacity:0;transform:translateY(-34px) scale(.4) rotate(calc(var(--r)*2))}55%{opacity:1;transform:translateY(4px) scale(1.1) rotate(calc(var(--r)*-.3))}100%{opacity:1;transform:none}}
+@keyframes slide{from{transform:translateY(var(--dy,0px))}to{transform:none}}
+/* headline starts at screen center (--dy set in JS), then slides down to rest on the portrait */
+body.play #headline{animation:slide .6s cubic-bezier(.16,1,.3,1) 3s both}
+body.play .hero__sub,body.play .hero__loc{animation:reveal .65s cubic-bezier(.16,1,.3,1) 3.4s both}
+body.play .portrait{animation:rise .85s cubic-bezier(.16,1,.3,1) 3.85s both}
+body.play #stars{animation:fadeIn 1s 3.45s both}
+body.play .header,body.play .hero__cue{animation:fadeIn .75s 3.95s both}
+/* ===== NAV IN REFERENCE STYLE (tiny tracked uppercase) ===== */
+.nav__logo{font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+@media (width>=1150px){.nav__link,.nav__contact{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#a3a3a3;background:none;padding:0;border-radius:0}.nav__link:hover,.nav__link.active,.nav__contact:hover{color:#fff;box-shadow:none}.nav__link::after{display:none}.nav__list{column-gap:2.25rem}}
+/* ===== CHARCOAL / SILVER THEME FOR EVERY SECTION (matches the intro). Change --first-color to re-accent. ===== */
+:root{--first-color:#e5e5e5;--gradient-color:linear-gradient(90deg,#a3a3a3,#fff 50%,#a3a3a3);--white-color:#fff;--black-color:#050505;--text-color:#a3a3a3;--body-color:#050505;--container-color:#101010;--border-color:#262626}
+body{background:radial-gradient(circle at 50% 0%,#141414 0%,#0a0a0a 52%,#050505 100%) fixed}
+.header.scrolled{background:rgba(5,5,5,.7)}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.07),#101010 55%)}
+.chip{background:rgba(255,255,255,.05)}
+.work__img{background:linear-gradient(135deg,#1a1a1a,#6e6e6e)}
+.button:hover{box-shadow:0 8px 24px rgba(255,255,255,.15)}
+.replay{background:rgba(10,10,10,.85)}
+@media (width<=1149px){.nav__menu{background:rgba(16,16,16,.6)}}
+.section__title{font-family:"Montserrat",sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:-.03em;font-size:clamp(1.8rem,6vw,3rem);background:linear-gradient(180deg,#fff 0%,#f0f0f0 32%,#a3a3a3 68%,#6e6e6e 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.section__title span{opacity:.6}
+/* ===== SQUARER BUTTONS, TAGS AND INPUTS (no pills) ===== */
+.button,.nav__contact,.replay,.contact__card,.work__link,.scrollup{border-radius:8px}
+.chip{border-radius:6px}
+.contact__form input,.contact__form textarea{border-radius:10px}
+.card{border-radius:14px}
+.dots button.on{border-radius:3px}
+/* ===== TESTIMONIALS: static grid, no auto-scroll ===== */
+.marquee{max-width:1120px;margin-inline:auto;padding-inline:1rem;overflow:visible;mask-image:none}
+.marquee__track{width:auto;flex-wrap:wrap;justify-content:center;animation:none}
+.marquee .card{width:min(100%,290px)}
+.marquee .card[aria-hidden]{display:none}/* ===== REVEAL (single, subtle) ===== */
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media (width>=2000px){html{font-size:125%}.container{max-width:1400px}}
+</style>
+</head>
+<body>
+<header class="header" id="header">
+  <nav class="nav container">
+    <a href="#home" class="nav__logo">Animesh Parajuli</a>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li><a href="#home" class="nav__link active">Home</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#work" class="nav__link">Work</a></li>
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#skills" class="nav__link">Skills</a></li>
+        <li><a href="#experience" class="nav__link">Experience</a></li>
+        <li><a href="#contact" class="nav__contact">Contact me</a></li>
+      </ul>
+      <button class="nav__close" id="nav-close" aria-label="Close menu">&times;</button>
+    </div>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Open menu">&#9776;</button>
+  </nav>
+</header>
+
+<main class="main">
+<!-- HOME: KINETIC INTRO -->
+<section class="hero" id="home">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="fx" id="dot" aria-hidden="true"></div>
+  
+  <!-- PORTRAIT: your photo is keyed, turned monochrome and melted into the background. Use the Upload photo button to try one, or set PHOTO_URL in the script (e.g. 'assets/img/profile.png'). -->
+  <div class="portrait" role="img" aria-label="Portrait of Animesh Parajuli"><canvas id="portrait"></canvas></div>
+  <div class="hero__head">
+    <h1 id="headline" aria-label="Animesh Parajuli, Portfolio">PORTFOLIO</h1>
+    <div class="hero__row"><p class="hero__sub" id="sub">UI/UX designer and React Native <em>developer</em></p><a class="hero__loc" href="#contact">Contact</a></div>
+  </div>
+  <div class="hero__cue" aria-hidden="true">Scroll</div>
+</section>
+<div class="replay-bar"><button class="replay" id="replay" type="button">&#8635; Replay intro</button><label class="replay">Upload photo<input id="photo" type="file" accept="image/*" hidden></label></div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container grid about__grid">
+    <div class="reveal">
+      <p class="about__statement">I’m a <span>UI/UX designer</span> and <span>graphic designer</span> in Pokhara, Nepal. I also build mobile apps with <span>React Native</span>.</p>
+      <div class="about__chips"><span class="chip">Figma</span><span class="chip">Photoshop</span><span class="chip">Illustrator</span></div>
+    </div>
+    <div class="reveal">
+      <p>During a UI/UX internship at Pravidhi Digital Innovation I made wireframes and prototypes in Figma, ran user research and built a design system. I also design logos and social media graphics in Photoshop and Illustrator.</p>
+      <p style="margin-top:1.5rem"><a href="#contact" class="button">Contact me &rarr;</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="container reveal">
+    <h2 class="section__title">View My <span>Work</span></h2>
+    <!-- PLACEHOLDER PROJECTS: replace titles, text and links, or swap .work__img for <img src="assets/img/x.webp" alt="..."> -->
+    <div class="work__track" id="track">
+      <article class="work__card card"><div class="work__img">Placeholder image<a class="work__link" href="#" aria-label="Open project 1">&nearr;</a></div><span class="work__num">01</span><h3>Mobile App UI Case Study</h3><p>Placeholder: research, wireframes and final screens for a mobile app.</p><div class="work__tags"><span class="chip">Figma</span><span class="chip">Prototyping</span></div></article>
+      <article class="work__card card"><div class="work__img">Placeholder image<a class="work__link" href="#" aria-label="Open project 2">&nearr;</a></div><span class="work__num">02</span><h3>Logo &amp; Branding Set</h3><p>Placeholder: a logo suite with colors, type and usage examples.</p><div class="work__tags"><span class="chip">Illustrator</span><span class="chip">Photoshop</span></div></article>
+      <article class="work__card card"><div class="work__img">Placeholder image<a class="work__link" href="#" aria-label="Open project 3">&nearr;</a></div><span class="work__num">03</span><h3>Figma Design System</h3><p>Placeholder: reusable components that keep a product consistent.</p><div class="work__tags"><span class="chip">Figma</span><span class="chip">Design systems</span></div></article>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container reveal">
+    <h2 class="section__title">My <span>Services</span></h2>
+    <div class="services__list" id="acc">
+      <div class="services__item card open"><button class="services__btn" aria-expanded="true">UI/UX Design<i>+</i></button><div class="services__info"><p>User research, personas, wireframes and interactive Figma prototypes, ready for developer handoff.</p></div></div>
+      <div class="services__item card"><button class="services__btn" aria-expanded="false">Graphic &amp; Logo Design<i>+</i></button><div class="services__info"><p>Logos, social media graphics and marketing assets that communicate your brand clearly.</p></div></div>
+      <div class="services__item card"><button class="services__btn" aria-expanded="false">Mobile App Development<i>+</i></button><div class="services__info"><p>Cross-platform apps built with React Native, from approved designs to a working build.</p></div></div>
+      <div class="services__item card"><button class="services__btn" aria-expanded="false">Digital Illustration<i>+</i></button><div class="services__info"><p>Custom illustrations and graphics made with digital tools, plus hand-drawn sketches.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container reveal">
+    <h2 class="section__title">My <span>Skills</span></h2>
+    <div class="grid skills__grid">
+      <div class="card skills__card"><h3>Design</h3><div class="skills__chips"><span class="chip">Figma</span><span class="chip">Photoshop</span><span class="chip">Illustrator</span><span class="chip">Wireframing</span><span class="chip">Prototyping</span><span class="chip">Design systems</span></div></div>
+      <div class="card skills__card"><h3>Development</h3><div class="skills__chips"><span class="chip">React Native</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Git</span></div></div>
+      <div class="card skills__card"><h3>Working style</h3><div class="skills__chips"><span class="chip">Collaboration</span><span class="chip">Persistence</span><span class="chip">User research</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE & EDUCATION -->
+<section class="section" id="experience">
+  <div class="container reveal">
+    <h2 class="section__title">Experience &amp; <span>Education</span></h2>
+    <div class="timeline">
+      <div class="timeline__item"><span class="timeline__date">Apr 2025 to Jul 2025</span><h3>UI/UX Design Intern</h3><p>Pravidhi Digital Innovation, Pokhara</p>
+        <ul><li>Designed wireframes and interactive Figma prototypes from concept to handoff.</li><li>Worked with developers and project managers through design handoff.</li><li>Ran user research and competitor analysis; built personas and journey maps.</li><li>Built and maintained a design system of reusable components.</li><li>Made Photoshop assets for marketing and social media.</li><li>Presented work in weekly design reviews.</li></ul></div>
+      <div class="timeline__item"><span class="timeline__date">Education</span><h3>BSc in Information Technology</h3><p>Infomax College of Information Technology &amp; Management, Pokhara</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THEY SAY -->
+<section class="section" id="testimonials">
+  <div class="container reveal"><h2 class="section__title">What They <span>Say</span></h2></div>
+  <!-- HOW TO EDIT: replace the placeholder cards below with real quotes, name and role. JS duplicates them for the infinite loop. -->
+  <div class="marquee"><div class="marquee__track" id="marquee">
+    <div class="card"><small>Recognition</small><p>Acknowledged for outstanding logo and graphic design work across personal and academic projects.</p><h4>Creative Design Recognition</h4></div>
+    <div class="card"><small>Recognition</small><p>Designed unique, visually appealing logos that earned recognition from peers, mentors and clients.</p><h4>Logo Design Excellence</h4></div>
+    <div class="card"><small>Placeholder</small><p>Replace this with a real quote from a mentor, teammate or client.</p><h4>Name, Role</h4></div>
+  </div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container reveal">
+    <h2 class="section__title">Contact <span>Me</span></h2>
+    <div class="grid contact__grid">
+      <form class="contact__form" id="form" novalidate>
+        <input type="text" id="name" placeholder="Name" aria-label="Name" required>
+        <input type="email" id="email" placeholder="Email" aria-label="Email" required>
+        <textarea id="message" placeholder="Message" aria-label="Message" required></textarea>
+        <button class="button" type="submit">Send message &rarr;</button>
+        <p class="contact__msg" id="msg" role="status"></p>
+      </form>
+      <div class="contact__cards">
+        <a class="contact__card" href="mailto:parajulianey@gmail.com"><span><small>Email</small>parajulianey@gmail.com</span>&nearr;</a>
+        <a class="contact__card" href="tel:+9779815117801"><span><small>Phone</small>+977-9815117801</span>&nearr;</a>
+        <div class="contact__card"><span><small>Location</small>Pokhara, Nepal</span></div>
+        <a class="contact__card" href="https://linkedin.com/in/aney-parajuli-076955354" target="_blank" rel="noopener"><span><small>LinkedIn</small>aney-parajuli</span>&nearr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer container">
+  <div class="grid footer__grid">
+    <h2 class="footer__title">Need an app interface or a logo designed? Send me a message.</h2>
+    <nav class="footer__links" aria-label="Footer"><a href="#work">Work</a><a href="#services">Services</a><a href="#skills">Skills</a><a href="https://linkedin.com/in/aney-parajuli-076955354" target="_blank" rel="noopener">LinkedIn</a></nav>
+  </div>
+  <p class="footer__copy">&copy; 2026 Animesh Parajuli. All rights reserved.</p>
+</footer>
+<a href="#home" class="scrollup" id="scrollup" aria-label="Scroll to top">&uarr;</a>
+
+<script>
+/* ===== MOBILE MENU ===== */
+const menu=document.getElementById('nav-menu');
+document.getElementById('nav-toggle').onclick=()=>menu.classList.add('show-menu');
+document.getElementById('nav-close').onclick=()=>menu.classList.remove('show-menu');
+document.querySelectorAll('.nav__link,.nav__contact').forEach(l=>l.addEventListener('click',()=>menu.classList.remove('show-menu')));
+
+/* ===== TYPED TEXT ===== */
+(()=>{const el=document.getElementById('typed-off'),w=[];if(!el)return;
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=w.join(' · ');return}
+let i=0,j=0,del=false;(function t(){const s=w[i];el.textContent=s.slice(0,j);
+if(!del&&j===s.length){del=true;return setTimeout(t,1400)}
+if(del&&j===0){del=false;i=(i+1)%w.length}
+j+=del?-1:1;setTimeout(t,del?40:80)})()})();
+
+/* ===== HEADER, SCROLL-UP, SCROLL-SPY ===== */
+const header=document.getElementById('header'),up=document.getElementById('scrollup');
+const links=[...document.querySelectorAll('.nav__link')];
+addEventListener('scroll',()=>{
+  header.classList.toggle('scrolled',scrollY>50);
+  up.classList.toggle('show',scrollY>350);
+  let cur='home';document.querySelectorAll('main section[id]').forEach(s=>{if(scrollY>=s.offsetTop-160)cur=s.id});
+  links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+/* ===== WORK SLIDER (scroll-snap + dots + autoplay + drag) ===== */
+(()=>{const tr=document.getElementById('track'),cards=[...tr.children],dots=document.getElementById('dots');
+cards.forEach((c,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Go to project '+(i+1));b.onclick=()=>tr.scrollTo({left:c.offsetLeft-tr.offsetLeft,behavior:'smooth'});dots.appendChild(b)});
+const mark=()=>{const i=Math.min(cards.length-1,Math.round(tr.scrollLeft/(cards[0].offsetWidth+19)));[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i))};
+tr.addEventListener('scroll',mark,{passive:true});mark();
+let down=false,x=0,s=0;tr.onpointerdown=e=>{if(e.pointerType==='mouse'){down=true;x=e.clientX;s=tr.scrollLeft;tr.style.scrollSnapType='none'}};
+addEventListener('pointerup',()=>{if(down){down=false;tr.style.scrollSnapType=''}});
+tr.onpointermove=e=>{if(down)tr.scrollLeft=s-(e.clientX-x)};
+})();
+
+/* ===== SERVICES ACCORDION ===== */
+document.querySelectorAll('.services__item').forEach(it=>it.querySelector('button').onclick=()=>{
+  const open=it.classList.contains('open');
+  document.querySelectorAll('.services__item').forEach(o=>{o.classList.remove('open');o.querySelector('button').setAttribute('aria-expanded','false')});
+  if(!open){it.classList.add('open');it.querySelector('button').setAttribute('aria-expanded','true')}});
+
+/* ===== TESTIMONIALS: duplicate cards for infinite scroll ===== */
+(()=>{const t=document.getElementById('marquee'),o=[...t.children];
+[...o,...o].slice(o.length).forEach(c=>{const d=c.cloneNode(true);d.setAttribute('aria-hidden','true');t.appendChild(d)})})();
+
+/* ===== CONTACT FORM =====
+   Default: opens the visitor's email app. To use EmailJS instead, add its script from
+   https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js, then call
+   emailjs.sendForm('SERVICE_ID','TEMPLATE_ID',form,'PUBLIC_KEY') where this handler builds the mailto link. */
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();const n=name.value.trim(),m=email.value.trim(),b=message.value.trim(),out=document.getElementById('msg');
+  if(!n||!/^\S+@\S+\.\S+$/.test(m)||!b){out.textContent='Add your name, a valid email and a message, then send again.';return}
+  out.textContent='Opening your email app to send the message…';
+  location.href='mailto:parajulianey@gmail.com?subject='+encodeURIComponent('Portfolio message from '+n)+'&body='+encodeURIComponent(b+'\n\n'+n+' ('+m+')')});
+
+/* ===== PORTRAIT ENGINE: key out background, monochrome, vignette, particle assembly ===== */
+(()=>{
+  const S=560,cv=document.getElementById('portrait'),c=cv.getContext('2d');cv.width=cv.height=S;
+  const buf=document.createElement('canvas');buf.width=buf.height=S;const b=buf.getContext('2d',{willReadFrequently:true});
+  const PHOTO_URL='';           /* e.g. 'assets/img/profile.png' */
+  const TOL=42,CON=1.35,BRI=.95; /* background removal %, contrast, brightness */
+  let img,P=[],raf;
+  const svg='<svg viewBox="0 0 500 540" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="g" cx="50%" cy="38%" r="46%"><stop offset="0" stop-color="#f2f2f2"/><stop offset="1" stop-color="#050505" stop-opacity="0"/></radialGradient></defs><ellipse cx="250" cy="220" rx="140" ry="160" fill="url(#g)" opacity=".4"/><path d="M72,540C82,432 132,382 195,370L250,415L305,370C368,382 418,432 428,540Z" fill="#2a2a2a" stroke="#888" stroke-width="2"/><path d="M216,305V378Q250,402 284,378V305Z" fill="#525252"/><path d="M182,195C182,125 318,125 318,195C318,262 292,316 250,324C208,316 182,262 182,195Z" fill="#a3a3a3"/><path d="M174,205C164,165 175,112 215,96C235,84 275,86 298,104C332,124 336,172 324,208C318,175 304,152 282,146C255,140 225,142 198,154C184,164 178,184 174,205Z" fill="#181818" stroke="#666"/></svg>';
+  function process(){
+    b.clearRect(0,0,S,S);
+    const a=img.width/img.height;let w=S*.88,h=S*.88;a>1?h=w/a:w=h*a;
+    const dx=(S-w)/2,dy=(S-h)/2+12;b.drawImage(img,dx,dy,w,h);
+    let d;try{d=b.getImageData(0,0,S,S)}catch(e){frame(1);return}
+    const D=d.data;let R=0,G=0,B=0,n=0;
+    for(const[p,q]of[[dx+4,dy+4],[dx+w-5,dy+4],[dx+w/2,dy+4],[dx+4,dy+h/2],[dx+w-5,dy+h/2]]){const i=((q|0)*S+(p|0))*4;if(D[i+3]>20){R+=D[i];G+=D[i+1];B+=D[i+2];n++}}
+    if(n){R/=n;G/=n;B/=n}
+    const tol=TOL/100*195,fb=Math.max(22,tol*.45);
+    for(let y=0;y<S;y++)for(let x=0;x<S;x++){
+      const i=(y*S+x)*4,al=D[i+3];if(!al)continue;
+      let m=1;if(n){const e=Math.hypot(D[i]-R,D[i+1]-G,D[i+2]-B);m=e<tol?0:e<tol+fb?(e-tol)/fb:1}
+      const r=Math.hypot((x-S*.5)/(S*.43),(y-S*.46)/(S*.47));
+      const v=r>.62?Math.max(0,1-(r-.62)/.38)**2:1;
+      let l=(.299*D[i]+.587*D[i+1]+.114*D[i+2])*BRI;l=Math.max(0,Math.min(255,(l-128)*CON+128+(Math.random()-.5)*16));
+      const f=al/255*m*v;D[i]=D[i+1]=D[i+2]=l*f;D[i+3]=f*255;
+    }
+    b.putImageData(d,0,0);
+    P=[];
+    for(let y=20;y<S-10;y+=4)for(let x=30;x<S-30;x+=4){const i=(y*S+x)*4;
+      if(D[i+3]>45&&D[i]>28&&Math.random()<D[i]/255*.72){const t=Math.random()*6.283,r=110+Math.random()*230;
+        P.push({x,y,sx:S/2+Math.cos(t)*r,sy:S*.45+Math.sin(t)*r*.85,z:Math.random()*1.55+.55,s:Math.min(255,D[i]*1.15+40|0),d:Math.random()*.28})}}
+    frame(1);
+  }
+  function frame(p){
+    c.clearRect(0,0,S,S);const o=p<=.45?0:Math.min(1,(p-.45)/.55);
+    if(o){c.globalAlpha=o;c.drawImage(buf,0,0);c.globalAlpha=1}
+    const pa=p<.85?Math.min(1,p*2.2):Math.max(.22,1-(p-.85)*5.2);
+    for(const q of P){const t=Math.max(0,Math.min(1,(p-q.d)/(1-q.d))),e=1-(1-t)**4,sw=(1-e)*.65,dx=q.sx-q.x,dy=q.sy-q.y;
+      c.fillStyle='rgba('+q.s+','+q.s+','+q.s+','+pa+')';
+      c.fillRect(q.x+(dx*Math.cos(sw)-dy*Math.sin(sw))*(1-e),q.y+(dx*Math.sin(sw)+dy*Math.cos(sw))*(1-e),q.z,q.z)}
+  }
+  window.assemble=()=>{cancelAnimationFrame(raf);if(!img)return;
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches)return frame(1);
+    const t0=performance.now();(function k(t){const p=Math.min(1,(t-t0)/1650);frame(p);if(p<1)raf=requestAnimationFrame(k)})(t0)};
+  const load=(u,go)=>{const i=new Image();if(u.slice(0,5)!=='data:')i.crossOrigin='anonymous';i.onload=()=>{img=i;process();if(go)assemble()};i.src=u};
+  load(PHOTO_URL||'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg));
+  document.getElementById('photo').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>load(r.result,true);r.readAsDataURL(f)};
+})();
+
+/* ===== KINETIC INTRO: letters, replay, starfield ===== */
+(()=>{
+  const b=document.body,hd=document.getElementById('headline'),hero=document.getElementById('home');
+  /* WORD swaps letter by letter into TARGET. Letters 4 to 1 drop in first, then the rest in order; TILT = each letter's start angle */
+  const WORD='ANIMESH\u00a0PARAJULI',TARGET='PORTFOLIO',TILT=[-14,10,-8,12,-12,9,-6];
+  const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;let timers=[];
+  const mk=(ch,i,on)=>{const s=document.createElement('span');s.textContent=ch;s.className='metal bounce'+(on?' on':'');s.style.setProperty('--i',i<4?3-i:i);s.style.setProperty('--r',TILT[i%7]+'deg');return s};
+  const play=()=>{
+    timers.forEach(clearTimeout);timers=[];clearTimeout(window.pt);b.classList.remove('play');hd.innerHTML='';
+    if(RM){[...TARGET].forEach((c,i)=>hd.appendChild(mk(c,i,true)));b.classList.add('play');return}
+    [...WORD].forEach((c,i)=>hd.appendChild(mk(c,i)));
+    /* the full name is wider than PORTFOLIO, so it starts smaller and grows back */
+    hd.style.transition='none';hd.style.fontSize='';hd.style.height='';
+    const fs=parseFloat(getComputedStyle(hd).fontSize),H=hd.offsetHeight,W=hd.scrollWidth;
+    hd.style.height=H+'px';hd.style.fontSize=fs*Math.min(1,hero.clientWidth*.9/W)+'px';
+    void hd.offsetWidth;hd.style.transition='';
+    const r=hd.getBoundingClientRect(),h=hero.getBoundingClientRect();
+    hd.style.setProperty('--dy',(h.top+h.height*.46-(r.top+r.height/2))+'px');
+    void b.offsetWidth;b.classList.add('play');
+    for(let k=0;k<WORD.length;k++)timers.push(setTimeout(()=>{if(k<TARGET.length)hd.children[k].textContent=TARGET[k];else hd.children[TARGET.length].remove()},1700+k*60));
+    timers.push(setTimeout(()=>{hd.style.fontSize='';hd.style.height=''},1700+WORD.length*60+100));
+    window.pt=setTimeout(()=>window.assemble&&assemble(),3850)};
+  document.getElementById('replay').onclick=play;(document.fonts?document.fonts.ready:Promise.resolve()).then(play);
+  const cv=document.getElementById('stars'),x=cv.getContext('2d');let w,h,P=[];
+  const fit=()=>{w=cv.width=cv.offsetWidth;h=cv.height=cv.offsetHeight;P=Array.from({length:Math.min(160,w*h/6000|0)},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.3+.3,a:Math.random()*.7+.15,v:Math.random()*.2+.05,t:Math.random()*6}))};
+  const draw=()=>{x.clearRect(0,0,w,h);x.fillStyle='#fff';for(const p of P){p.y-=p.v;p.t+=.02;if(p.y<-3)p.y=h+3;x.globalAlpha=p.a*(.65+.35*Math.sin(p.t));x.beginPath();x.arc(p.x,p.y,p.r,0,6.3);x.fill()}};
+  fit();addEventListener('resize',()=>{fit();draw()});draw();
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches)(function f(){draw();requestAnimationFrame(f)})();
+})();
+
+/* ===== REVEAL ON SCROLL ===== */
+
+</script>
+</body>
+</html>
